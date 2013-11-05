@@ -1,0 +1,12 @@
+<h1>Create a new todo</h1>
+
+<%= form_for @todo, {action: "create"} do |f| %>
+  <%= f.label :name %>:
+  <%= f.text_field :name %><br />
+
+  <%= collection_select(:todo, :todo_list_id, TodoList.all, :id, :name, :prompt => true) %>
+
+  <%= f.submit "Create" %>
+<% end %>
+
+<a href="/todo_lists">Cancel</a>

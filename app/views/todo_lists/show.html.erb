@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<%= @todo_list.name %>
+<ul id="todos">
+<% @todo_list.todos.each do |todo| %>
+  <li><%= todo.name %></li><br />
+<% end %>
+</ul>
+
+<h1>Create a new todo</h1>
+
+<%= form_for @todo, {action: "create"} do |f| %>
+  <%= f.label :name %>:
+  <%= f.text_field :name %><br />
+
+  <%= f.hidden_field :todo_list_id, :value => @todo_list.id %>
+
+  <%= f.submit "Create Todo" %>
+<% end %>
+
+<a href="/todo_lists">Cancel</a>
+
+
+<%= link_to 'Edit', edit_todo_list_path(@todo_list) %> |
+<%= link_to 'Back', todo_lists_path %>
